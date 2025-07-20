@@ -1,0 +1,51 @@
+title: About the Situation
+questions:
+  - id: which_situation
+    text: Which situation best applies to you?
+    type: radio
+    config:
+      options:
+        - label: Domestic Violence
+          value: dv
+        - label: Sexual Assault
+          value: sa
+  - id: live_in_us
+    text: Do you live in the US?
+    type: boolean
+  - id: state
+    text: What state do you live in?
+    type: dropdown
+    config:
+      options:
+        - label: California
+          value: ca
+        - label: Florida
+          value: fl
+        - label: New York
+          value: ny
+        - label: Texas
+          value: tx
+        - label: Washington
+          value: wa
+    visibility_conditions:
+      - type: 'value_check'
+        question_id: live_in_us
+        value: true
+      - type: 'value_check'
+        question_id: which_situation
+        value: dv
+  - id: country
+    text: What country do you live in?
+    type: dropdown
+    config:
+      options:
+        - label: Canada
+          value: ca
+        - label: Mexico
+          value: mx
+    visibility_conditions:
+      - type: 'not'
+        conditions:
+          - type: 'value_check'
+            question_id: live_in_us
+            value: true

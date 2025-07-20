@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "title": "Questionnaire",
+  "type": "object",
+  "required": ["title", "questions"],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "type"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["text", "boolean", "radio", "checkbox", "dropdown"]
+          },
+          "config": {
+            "type": "object",
+            "properties": {
+              "min_length": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "max_length": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["label", "value"],
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": ["string", "boolean", "number"]
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "visibility_conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["type", "question_id", "value"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["value_check"]
+                },
+                "question_id": {
+                  "type": "string"
+                },
+                "value": {}
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

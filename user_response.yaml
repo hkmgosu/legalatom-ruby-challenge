@@ -1,0 +1,12 @@
+personal_information:
+  name: Ubba Huang
+  have_alias: true
+  alias_name: "UBBA"
+  gender: male
+  ethnicity: 
+  - white
+  - asian
+about_the_situation:
+  which_situation: dv
+  live_in_us: false
+  country: ca

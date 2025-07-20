@@ -1,0 +1,48 @@
+title: Personal Information
+questions:
+  - id: name
+    text: What is your name?
+    type: text
+    config:
+      min_length: 10
+      max_length: 100
+  - id: have_alias
+    text: Do you have an alias?
+    type: boolean
+  - id: alias
+    text: What is your alias?
+    type: text
+    config:
+      max_length: 200
+    visibility_conditions:
+      - type: 'value_check'
+        question_id: have_alias
+        value: true
+  - id: gender
+    text: What is your gender?
+    type: radio
+    config:
+      options:
+        - label: Male
+          value: male
+        - label: Female
+          value: female
+        - label: X
+          value: x
+  - id: ethnicity
+    text: Select all that apply.
+    type: checkbox
+    config:
+      options:
+        - label: White
+          value: white
+        - label: Black
+          value: black
+        - label: Asian
+          value: asian
+        - label: Hispanic
+          value: hispanic
+        - label: Other
+          value: _
+        - label: None of the above
+          value: none_of_the_above
