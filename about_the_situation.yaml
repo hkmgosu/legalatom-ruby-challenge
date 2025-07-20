@@ -27,7 +27,7 @@ questions:
           value: tx
         - label: Washington
           value: wa
-    visibility_conditions:
+    conditions:
       - type: 'value_check'
         question_id: live_in_us
         value: true
@@ -43,9 +43,7 @@ questions:
           value: ca
         - label: Mexico
           value: mx
-    visibility_conditions:
-      - type: 'not'
-        conditions:
-          - type: 'value_check'
-            question_id: live_in_us
-            value: true
+    conditions:
+      - type: 'value_check'
+        question_id: live_in_us
+        value: false

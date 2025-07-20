@@ -1,7 +1,7 @@
 personal_information:
   name: Ubba Huang
   have_alias: true
-  alias_name: "UBBA"
+  alias: "UBBA"
   gender: male
   ethnicity: 
   - white
@@ -10,3 +10,5 @@ about_the_situation:
   which_situation: dv
   live_in_us: false
   country: ca
+
+  ### Iterate through each questionnaire and print questions, in this case from user_response.yaml file, works without user response too

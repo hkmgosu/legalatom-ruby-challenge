@@ -52,7 +52,7 @@
             },
             "additionalProperties": false
           },
-          "visibility_conditions": {
+          "conditions": {
             "type": "array",
             "items": {
               "type": "object",

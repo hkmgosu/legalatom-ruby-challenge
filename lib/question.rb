@@ -1,23 +1,23 @@
 
 class Question
-  attr_reader :id, :text, :type, :config, :visibility_conditions
+  attr_reader :id, :text, :type, :config, :conditions
 
   def initialize(data)
     @id = data['id']
     @text = data['text']
     @type = data['type']
     @config = data['config'] || {}
-    @visibility_conditions = (data['visibility_conditions'] || []).map { |cond| Condition.new(cond) }
+    @conditions = (data['conditions'] || []).map { |cond| Condition.new(cond) }
   end
 
   def visible?(responses)
-    return true if @visibility_conditions.empty?
+    return true if @conditions.empty?
     evaluate_visibility(responses)
   end
 
   def evaluate_visibility(responses)
     # All conditions must be true for the question to be visible
-    @visibility_conditions.all? { |cond| cond.evaluate(responses) }
+    @conditions.all? { |cond| cond.evaluate(responses) }
   end
 
   def print_question(responses)
@@ -28,7 +28,7 @@ class Question
       min_length = @config['min_length'] || 0
       max_length = @config['max_length'] || '∞'
       puts "#{@text}"
-      puts "  [Input] (min: #{min_length} chars, max: #{max_length} chars)"
+      puts "  #{ responses[@id] ? responses[@id] : '[Input]' } (min: #{min_length} chars, max: #{max_length} chars)"
     when 'boolean'
       selected_value = responses[@id]
       puts "#{@text}"

@@ -14,7 +14,7 @@ questions:
     type: text
     config:
       max_length: 200
-    visibility_conditions:
+    conditions:
       - type: 'value_check'
         question_id: have_alias
         value: true

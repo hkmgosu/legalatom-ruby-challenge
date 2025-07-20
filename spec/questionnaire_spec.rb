@@ -74,7 +74,7 @@ RSpec.describe Questionnaire do
 
       expect(output_str).to include('=== Test Questionnaire ===')
       expect(output_str).to include('What is your name?')
-      expect(output_str).to include('Input')
+      expect(output_str).to include('Alice')
       expect(output_str).to include('Do you have an Alias?')
       expect(output_str).to include('(x) No')
     end
